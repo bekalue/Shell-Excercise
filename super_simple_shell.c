@@ -8,8 +8,11 @@ int main(void)
 {
 	pid_t child_pid;
 	int status;
-	size_t n = 1024;
+	size_t n = 20;
 	char *argv[] = {NULL, NULL};
+	argv[0] = malloc(sizeof(char) * n);
+	if (!argv[0])
+		return (-1);
 
 	while (1)
 	{
@@ -31,5 +34,6 @@ int main(void)
 		else
 			wait(&status);
 	}
+	free(argv[0]);
 	return (0);
 }
