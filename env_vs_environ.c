@@ -11,7 +11,7 @@ extern char **environ;
  *
  * Return: 0 always success
  */
-int main(int ac, char **av, char **env)
+int main(int __attribute((unused))ac, char __attribute((unused))**av, char **env)
 {
 	printf("the address of env: %p\n", &env);
 	printf("the address of environ: %p\n", &environ);

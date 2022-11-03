@@ -3,7 +3,12 @@
 #include <unistd.h>
 
 extern char **environ;
-
+/**
+ * main - a program that prints the environment
+ * \ using the global variable environ.
+ *
+ * Return: 0 success.
+ */
 int main(void)
 {
 	int i;
