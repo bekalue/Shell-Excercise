@@ -10,31 +10,26 @@ int main(void)
 	int status;
 	size_t n = 1024;
 	char *argv[] = {NULL, NULL};
-	char *buf = malloc(sizeof(char) * n);
-	if(!buf)
-		return (-1);
 
 	while (1)
 	{
 		printf(":) ");
-		getline(&buf, &n, stdin);
-		argv[0] = buf;
+		getline(&argv[0], &n, stdin);
 
 		child_pid = fork();
 
 		if (child_pid == -1)
 		{
-			perror("Error:");
+			perror("Error");
 			return (-1);
 		}
 		if (child_pid == 0)
 		{
 			if (execve(argv[0], argv, NULL) == -1)
-				perror("Error:");
+				perror("Error");
 		}
 		else
 			wait(&status);
 	}
-	free(buf);
 	return (0);
 }
